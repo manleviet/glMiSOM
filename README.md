@@ -28,6 +28,7 @@ Ce logiciel exécute seulement sur le système d’exploitation Ubuntu avec la p
 
 ##Fichiers metadata
 Pour chaque base d’images, glMiSOM stocke ses informations sur des fichiers metadata, en généralement y compris :
+
 1. database.meta : stocker les chemins de toutes les images dans la base d’images
 2. features.meta : stocker toutes les caractéristiques que glMiSOM a extrait
 3. map.meta : stocker des paramètres de l’algorithme Carte auto-organisatrices, la grille de Kohonen, le résultat de visualisation et celui de ré-arrangement de la dernière fois d'exécution.
@@ -35,6 +36,7 @@ Pour chaque base d’images, glMiSOM stocke ses informations sur des fichiers me
 
 ##Dossiers nécessaires
 Dans le dossiers de glMiSOM, on a aussi deux dossiers nécessaires pour exécuter du logiciel :
+
 1. images : ce dossier stocke une image transparent.png. Cette image sert à dessiner la quantité d’images dans une casse de la grille de SOM.
 2. plugins : stocker quatre modules d’exécution de quatre extracteurs des caractéristiques.
 
