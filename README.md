@@ -28,17 +28,19 @@ Ce logiciel exécute seulement sur le système d’exploitation Ubuntu avec la p
 
 ##Fichiers metadata
 Pour chaque base d’images, glMiSOM stocke ses informations sur des fichiers metadata, en généralement y compris :
-database.meta : stocker les chemins de toutes les images dans la base d’images
-features.meta : stocker toutes les caractéristiques que glMiSOM a extrait
-map.meta : stocker des paramètres de l’algorithme Carte auto-organisatrices, la grille de Kohonen, le résultat de visualisation et celui de ré-arrangement de la dernière fois d'exécution.
-Les fichiers meta des images <nom de l’image.meta> : stocker les vecteurs de caractéristiques extraits de cette image.
-Dossiers nécessaires
+1. database.meta : stocker les chemins de toutes les images dans la base d’images
+2. features.meta : stocker toutes les caractéristiques que glMiSOM a extrait
+3. map.meta : stocker des paramètres de l’algorithme Carte auto-organisatrices, la grille de Kohonen, le résultat de visualisation et celui de ré-arrangement de la dernière fois d'exécution.
+4. Les fichiers meta des images <nom de l’image.meta> : stocker les vecteurs de caractéristiques extraits de cette image.
+
+##Dossiers nécessaires
 Dans le dossiers de glMiSOM, on a aussi deux dossiers nécessaires pour exécuter du logiciel :
-images : ce dossier stocke une image transparent.png. Cette image sert à dessiner la quantité d’images dans une casse de la grille de SOM.
-plugins : stocker quatre modules d’exécution de quatre extracteurs des caractéristiques.
-Exemple d’un processus de l’utilisation de glMiSOM
+1. images : ce dossier stocke une image transparent.png. Cette image sert à dessiner la quantité d’images dans une casse de la grille de SOM.
+2. plugins : stocker quatre modules d’exécution de quatre extracteurs des caractéristiques.
+
+##Exemple d’un processus de l’utilisation de glMiSOM
 Voir le vidéo glMiSOM’s demo.m4v.
-Notes : Pour utiliser les bases d’images associées, vous ouvririez le fichier database.meta de chaque base d’images et changez les chemins d’images pour s’adapter avec le endroit où vous mettez les images.
+*Notes : Pour utiliser les bases d’images associées, vous ouvririez le fichier database.meta de chaque base d’images et changez les chemins d’images pour s’adapter avec le endroit où vous mettez les images.*
 
 ##Classes du glMiSOM
 J’ai organisé le glMiSOM en cinq modules :
