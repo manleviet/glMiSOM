@@ -3,27 +3,28 @@ glMiSOM
 
 #Introduction
 glMiSOM est un prototype de la gestion d’images qui permet à l’utilisateur de chercher des images similaires en représentant toutes les images sur une surface plane où les images plus proches sont plus similaires et vice versa. En même temps, glMiSOM est aussi utilisé comme l’outil de test pour les caractéristiques de bas niveau de la sémantique de l’image  et les combinaisons des caractéristiques.
+
 Pour utiliser bien ce logiciel, l’utilisateur doit savoir des connaissances sur les caractéristiques de bas niveau de la sémantique de l’image, le processus d’extraction des caractéristiques et l’algorithme Cartes auto-organisatrices (SOM - Self Organizing Map).
 
 #Nécessités
 Ce logiciel exécute seulement sur le système d’exploitation Ubuntu avec la plateforme Qt 4.7.4 ou ultérieure et OpenCV 2.1. Le logiciel utilise encore la librairie QOpenGL de Qt. Donc, dans votre système, vous devez installer les paquets suivants, avec toutes les dépendances associées : xord-dev, freeglut3, freeglut3-dev.
 
 #Fonctionnalisés
-Soutenir les types d’images suivants : jpg, jpeg, png, bmp, tiff, ppm, pgm
-Gérer, charger, enregistrer les bases d’images en utilisant les fichiers metadata
-Charger, enregistrer les cartes de SOM
-Charger, enregistrer les codes de SOM
-Soutenir les extracteurs des caractéristiques sous forme des modules d’extension. Actuellement, le logiciel a installé trois modules d’extension statiques : Color Histogram (l’histogramme de couleur), Hu Moments (les moments de Hu), Matrix Cooccurrence 2 (la texture) et un module d’extension dynamique : Matrix Cooccurrence (la texture).
-Indexer et visualiser les images en utilisant l’algorithme Cartes auto-organisatrices (SOM - Self Organizing Map)
-Ré-arranger la grille de Kohonen en utilisant l’algorithme Ré-arrangement (lire le rapport de stage pour savoir plus)
-Représenter les images sous forme de la grille, soutenir de voir en plein écran et l’animation
-Exploration simple : zoom, explorer en utilisant la souris ou quatre boutons flèche du clavier.
-Voir les informations de la base d’images ainsi que chaque image et voir l’image de la taille originale.
-Importer les nouvelles images à la base d’images
-Capturer l’écran
-Changer la couleur du fond des images
-Chercher l’image basé sur le contenu
-Classifier en utilisant la couleur
+1. Soutenir les types d’images suivants : jpg, jpeg, png, bmp, tiff, ppm, pgm
+2. Gérer, charger, enregistrer les bases d’images en utilisant les fichiers metadata
+3. Charger, enregistrer les cartes de SOM
+4. Charger, enregistrer les codes de SOM
+5. Soutenir les extracteurs des caractéristiques sous forme des modules d’extension. Actuellement, le logiciel a installé trois modules d’extension statiques : Color Histogram (l’histogramme de couleur), Hu Moments (les moments de Hu), Matrix Cooccurrence 2 (la texture) et un module d’extension dynamique : Matrix Cooccurrence (la texture).
+6. Indexer et visualiser les images en utilisant l’algorithme Cartes auto-organisatrices (SOM - Self Organizing Map)
+7. Ré-arranger la grille de Kohonen en utilisant l’algorithme Ré-arrangement (lire le rapport de stage pour savoir plus)
+8. Représenter les images sous forme de la grille, soutenir de voir en plein écran et l’animation
+9. Exploration simple : zoom, explorer en utilisant la souris ou quatre boutons flèche du clavier.
+10. Voir les informations de la base d’images ainsi que chaque image et voir l’image de la taille originale.
+11. Importer les nouvelles images à la base d’images
+12. Capturer l’écran
+13. Changer la couleur du fond des images
+14. Chercher l’image basé sur le contenu
+15. Classifier en utilisant la couleur
 
 #Fichiers metadata
 Pour chaque base d’images, glMiSOM stocke ses informations sur des fichiers metadata, en généralement y compris :
