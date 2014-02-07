@@ -77,6 +77,7 @@ SOURCES       = ../../glMiSOM/Core/image.cpp \
 Ensuite, vous créer deux classes qui hériteront deux classes *ExtractorInterface* et *ExtractorWidgetInterface*.
 
 **ExtractorWidgetInterface** définit l’interface sur l’écran où l’utilisateur peut choisir des paramètres de l’extracteur. C’est une classe héritant la classes QGroupBox. Sa définition est suivante :
+```
 #include <QGroupBox>
 class ExtractorWidgetInterface : public QGroupBox
 {
@@ -92,14 +93,15 @@ public:
 private slots:
     virtual void computeQuantity() = 0;
 };
-
+```
 Dans la fonction de construction, vous créez des widgets nécessaires pour l’interface de l’extracteur. En même temps, vous implémentez six fonctions suivantes :
-resetDefault : restaurer les valeurs dans les widgets en utilisant les valeurs par défaut
-getParams : retourner une liste des paramètres. Généralement, cette liste possède d’un ou deux éléments : un élément pour le choix global et un élément pour le choix local. Chaque élément dans la liste est une chaîne de textes où chaque paramètre sont distingués par un caractère spécial (comme la virgule dans l’exemple). Le développer a tout le droit de décider la façon de définir les paramètres.
-isHaveError : vérifier l’erreur des paramètres appuyés par l’utilisateur
-isGlobalChecked : vérifier le choix sur l’extracteur global
-isLocalChecked : vérifier le choix sur l’extracteur local
-computeQuantity : calculer le nombre des éléments du vecteur de caractéristiques, sert seulement à représenter sur l’interface elle-même.
+
+1. *resetDefault* : restaurer les valeurs dans les widgets en utilisant les valeurs par défaut
+2. *getParams* : retourner une liste des paramètres. Généralement, cette liste possède d’un ou deux éléments : un élément pour le choix global et un élément pour le choix local. Chaque élément dans la liste est une chaîne de textes où chaque paramètre sont distingués par un caractère spécial (comme la virgule dans l’exemple). Le développer a tout le droit de décider la façon de définir les paramètres.
+3. *isHaveError* : vérifier l’erreur des paramètres appuyés par l’utilisateur
+4. *isGlobalChecked* : vérifier le choix sur l’extracteur global
+5. *isLocalChecked* : vérifier le choix sur l’extracteur local
+6. *computeQuantity* : calculer le nombre des éléments du vecteur de caractéristiques, sert seulement à représenter sur l’interface elle-même.
 
 Exemple :
 ```C++
@@ -225,7 +227,7 @@ QString ColorHistogramWidget::getParam(bool local, int numBin)
 }
 ```
 
-ExtractorInterface définit les fonctions nécessaires pour extraire des caractéristiques, calculer la distance entre deux vecteurs de caractéristiques et faire l’adaptation dans l’algorithme SOM. Sa définition est suivante :
+**ExtractorInterface** définit les fonctions nécessaires pour extraire des caractéristiques, calculer la distance entre deux vecteurs de caractéristiques et faire l’adaptation dans l’algorithme SOM. Sa définition est suivante :
 
 ```C++
 //
