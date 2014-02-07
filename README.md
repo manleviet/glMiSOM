@@ -40,7 +40,8 @@ Dans le dossiers de glMiSOM, on a aussi deux dossiers nécessaires pour exécute
 
 ##Exemple d’un processus de l’utilisation de glMiSOM
 Voir le vidéo glMiSOM’s demo.m4v.
-*Notes : Pour utiliser les bases d’images associées, vous ouvririez le fichier database.meta de chaque base d’images et changez les chemins d’images pour s’adapter avec le endroit où vous mettez les images.*
+
+**Notes : Pour utiliser les bases d’images associées, vous ouvririez le fichier database.meta de chaque base d’images et changez les chemins d’images pour s’adapter avec le endroit où vous mettez les images.**
 
 ##Classes du glMiSOM
 J’ai organisé le glMiSOM en cinq modules :
