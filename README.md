@@ -1,15 +1,15 @@
 glMiSOM
 =======
 
-#Introduction
+##Introduction
 glMiSOM est un prototype de la gestion d’images qui permet à l’utilisateur de chercher des images similaires en représentant toutes les images sur une surface plane où les images plus proches sont plus similaires et vice versa. En même temps, glMiSOM est aussi utilisé comme l’outil de test pour les caractéristiques de bas niveau de la sémantique de l’image  et les combinaisons des caractéristiques.
 
 Pour utiliser bien ce logiciel, l’utilisateur doit savoir des connaissances sur les caractéristiques de bas niveau de la sémantique de l’image, le processus d’extraction des caractéristiques et l’algorithme Cartes auto-organisatrices (SOM - Self Organizing Map).
 
-#Nécessités
+##Nécessités
 Ce logiciel exécute seulement sur le système d’exploitation Ubuntu avec la plateforme Qt 4.7.4 ou ultérieure et OpenCV 2.1. Le logiciel utilise encore la librairie QOpenGL de Qt. Donc, dans votre système, vous devez installer les paquets suivants, avec toutes les dépendances associées : xord-dev, freeglut3, freeglut3-dev.
 
-#Fonctionnalisés
+##Fonctionnalisés
 1. Soutenir les types d’images suivants : jpg, jpeg, png, bmp, tiff, ppm, pgm
 2. Gérer, charger, enregistrer les bases d’images en utilisant les fichiers metadata
 3. Charger, enregistrer les cartes de SOM
@@ -26,7 +26,7 @@ Ce logiciel exécute seulement sur le système d’exploitation Ubuntu avec la p
 14. Chercher l’image basé sur le contenu
 15. Classifier en utilisant la couleur
 
-#Fichiers metadata
+##Fichiers metadata
 Pour chaque base d’images, glMiSOM stocke ses informations sur des fichiers metadata, en généralement y compris :
 database.meta : stocker les chemins de toutes les images dans la base d’images
 features.meta : stocker toutes les caractéristiques que glMiSOM a extrait
@@ -40,7 +40,7 @@ Exemple d’un processus de l’utilisation de glMiSOM
 Voir le vidéo glMiSOM’s demo.m4v.
 Notes : Pour utiliser les bases d’images associées, vous ouvririez le fichier database.meta de chaque base d’images et changez les chemins d’images pour s’adapter avec le endroit où vous mettez les images.
 
-#Classes du glMiSOM
+##Classes du glMiSOM
 J’ai organisé le glMiSOM en cinq modules :
 Core : Ce sont les classes basiques qui servent à stocker la base d’image et la grille de SOM. Ce module comprend les classes suivantes : baseimage, image, feature, gridsom, rowsom, cellsom.
 Exception : Ce module contient les définitions des Exceptions du glMiSOM. Ces exceptions hérite la classe exception de la librairie C++ utilisées par les commandes try catch.
@@ -92,6 +92,7 @@ isLocalChecked : vérifier le choix sur l’extracteur local
 computeQuantity : calculer le nombre des éléments du vecteur de caractéristiques, sert seulement à représenter sur l’interface elle-même.
 
 Exemple :
+```C++
 //
 //
 // colorhistogramwidget.cpp
@@ -212,7 +213,11 @@ QString ColorHistogramWidget::getParam(bool local, int numBin)
     QString param = QString("%1,%2").arg(local?1:0).arg(numBin);
     return param;
 }
+```
+
 ExtractorInterface définit les fonctions nécessaires pour extraire des caractéristiques, calculer la distance entre deux vecteurs de caractéristiques et faire l’adaptation dans l’algorithme SOM. Sa définition est suivante :
+
+```C++
 //
 //
 // extractorinterface.h
@@ -251,6 +256,8 @@ public:
 Q_DECLARE_INTERFACE(ExtractorInterface,
                     "com.manleviet.glMiSOM.ExtractorInterface/1.1")
 #endif // EXTRACTORINTERFACE_H
+```
+
 Alors, un module d’extension doit implémenter les fonctions suivantes :
 about : retourner la chaîne de textes qui introduit au module d’extension. Cette fonction est utilisée par la fenêtre de gestion des modules d’extension.
 getPluginName : retourner le nom du fichier de module d’extension
