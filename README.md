@@ -271,22 +271,23 @@ Q_DECLARE_INTERFACE(ExtractorInterface,
 ```
 
 Alors, un module d’extension doit implémenter les fonctions suivantes :
-about : retourner la chaîne de textes qui introduit au module d’extension. Cette fonction est utilisée par la fenêtre de gestion des modules d’extension.
-getPluginName : retourner le nom du fichier de module d’extension
-getName : retourner le nom abrégé de l’extracteur
-getFullName : retourner le nom complet de l’extracteur
-getUi : retourner un pointeur qui pointe à une instance de la classe ExtractorWidgetInterface
-createUi : créer l’interface de l’extracteur et retourner un pointeur
-extract : une fonction importante, sert à extraire des caractéristiques. Elle reçoit une image que l’on veut extraire et une chaîne des paramètres (c’est la chaîne retournée par la fonction getParams de la classe qui hérite la classe ExtractorWidgetInterface ci-dessus)
-isMyDescriptor : vérifier si une chaîne de description est créée par cet extracteur.
-isLocal : vérifier si une chaîne des paramètres est local.
-getCodedDescriptor : créer une chaîne de description codée à partir des paramètres, sert à stocker
-getFullDescriptor : créer une chaîne de description à partir d’une chaîne de description codée, sert à présenter sur l’interface de glMiSOM.
-calDistanceEuc : calculer la distance euclidienne entre deux vecteurs de caractéristiques
-computeSizeTexture : calculer le nombre d’éléments d’un vecteur de caractéristiques
-adapt : faire l’adaptation, utilisée par l’algorithme SOM
+1. *about* : retourner la chaîne de textes qui introduit au module d’extension. Cette fonction est utilisée par la fenêtre de gestion des modules d’extension.
+2. *getPluginName* : retourner le nom du fichier de module d’extension
+3. *getName* : retourner le nom abrégé de l’extracteur
+4. *getFullName* : retourner le nom complet de l’extracteur
+5. *getUi* : retourner un pointeur qui pointe à une instance de la classe ExtractorWidgetInterface
+6. *createUi* : créer l’interface de l’extracteur et retourner un pointeur
+7. *extract* : une fonction importante, sert à extraire des caractéristiques. Elle reçoit une image que l’on veut extraire et une chaîne des paramètres (c’est la chaîne retournée par la fonction getParams de la classe qui hérite la classe ExtractorWidgetInterface ci-dessus)
+8. *isMyDescriptor* : vérifier si une chaîne de description est créée par cet extracteur.
+9. *isLocal* : vérifier si une chaîne des paramètres est local.
+10. *getCodedDescriptor* : créer une chaîne de description codée à partir des paramètres, sert à stocker
+11. *getFullDescriptor* : créer une chaîne de description à partir d’une chaîne de description codée, sert à présenter sur l’interface de glMiSOM.
+12. *calDistanceEuc* : calculer la distance euclidienne entre deux vecteurs de caractéristiques
+13. *computeSizeTexture* : calculer le nombre d’éléments d’un vecteur de caractéristiques
+14. *adapt* : faire l’adaptation, utilisée par l’algorithme SOM
 
 Exemple :
+```C++
 //
 //
 // colorhistogramextractor.cpp
@@ -509,4 +510,5 @@ void ColorHistogramExtractor::parseParams(QString codedDes, QString &name, bool 
     numBins = fields[2].toInt();
 }
 Q_EXPORT_PLUGIN2(colorhistogramextractor, ColorHistogramExtractor)
+```
 Vous pouvez voir la source code de quatre extracteurs dans le dossier Plugin pour comprendre bien.
