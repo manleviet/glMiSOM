@@ -28,6 +28,7 @@ Ce logiciel exécute seulement sur le système d’exploitation Ubuntu avec la p
 
 ##Fichiers metadata
 Pour chaque base d’images, glMiSOM stocke ses informations sur des fichiers metadata, en généralement y compris :
+
 1. *database.meta* : stocker les chemins de toutes les images dans la base d’images
 2. *features.meta* : stocker toutes les caractéristiques que glMiSOM a extrait
 3. *map.meta* : stocker des paramètres de l’algorithme Carte auto-organisatrices, la grille de Kohonen, le résultat de visualisation et celui de ré-arrangement de la dernière fois d'exécution.
@@ -35,6 +36,7 @@ Pour chaque base d’images, glMiSOM stocke ses informations sur des fichiers me
 
 ##Dossiers nécessaires
 Dans le dossiers de glMiSOM, on a aussi deux dossiers nécessaires pour exécuter du logiciel :
+
 1. *images* : ce dossier stocke une image transparent.png. Cette image sert à dessiner la quantité d’images dans une casse de la grille de SOM.
 2. *plugins* : stocker quatre modules d’exécution de quatre extracteurs des caractéristiques.
 
@@ -48,16 +50,19 @@ J’ai organisé le glMiSOM en cinq modules :
 1. **Core** : Ce sont les classes basiques qui servent à stocker la base d’image et la grille de SOM. Ce module comprend les classes suivantes : *baseimage*, *image*, *feature*, *gridsom*, *rowsom*, *cellsom*.
 2. **Exception** : Ce module contient les définitions des Exceptions du glMiSOM. Ces exceptions hérite la classe exception de la librairie C++ utilisées par les commandes try catch.
 3. **Scene** : comprendre deux classes importantes glsomscene et glimage qui dessine la grille d’images en utilisant la librairie QOpenGL. La classe animator est responsable de l’animation des images.
-4. **SOM** : implémenter l’algorithme SOM et l’algorithme Ré-arrangement, y compris les classes mapsom, entrysom, featureschosenlist, stableinfo, winnerinfo.
-5. **UI** : contenir les classes d’interface du logiciel : capturescreendialog, chosendescriptors, codedialog, extrairefeaturesdialog, indexationdialog, pluginsdialog, viewcodesdialog, viewimagedialog, viewmetadatadialog, weighdelegate.
+4. **SOM** : implémenter l’algorithme SOM et l’algorithme Ré-arrangement, y compris les classes *mapsom*, *entrysom*, *featureschosenlist*, *stableinfo*, *winnerinfo*.
+5. **UI** : contenir les classes d’interface du logiciel : *capturescreendialog*, *chosendescriptors*, *codedialog*, *extrairefeaturesdialog*, *indexationdialog*, *pluginsdialog*, *viewcodesdialog*, *viewimagedialog*, *viewmetadatadialog*, *weighdelegate*.
 
 De plus, j’ai une classe util qui comprend des fonctions utiles et statiques.
-Pour soutenir les modules d’extension, glMiSOM définir deux classes extractorinterface et extractorwidgetinterface. Tous les modules d’extension doivent hériter ces deux classes.
-Codage d’un nouveau module d’extension de l’extracteur des caractéristiques
-Pour coder bien des modules d’extension, il faut savoir des connaissances basiques sur le codage d’un module d’extension dans la plateforme Qt (lire le guide de Qt pour plus information).
 
-Tout d’abord, dans le fichier .pro du projet, vous ajoutez le chemin de la source code de glMiSOM dans INCLUDEPATH, celui de cinq fichiers extractorinterface.h, extractorwidgetinterface.h, image.h, feature.h, util.h dans HEADERS et celui de trois fichiers image.cpp, feature.cpp et util.cpp dans SOURCES.
+Pour soutenir les modules d’extension, glMiSOM définir deux classes extractorinterface et extractorwidgetinterface. Tous les modules d’extension doivent hériter ces deux classes.
+
+##Codage d’un nouveau module d’extension de l’extracteur des caractéristiques
+*Pour coder bien des modules d’extension, il faut savoir des connaissances basiques sur le codage d’un module d’extension dans la plateforme Qt (lire le guide de Qt pour plus information).*
+
+Tout d’abord, dans le fichier .pro du projet, vous ajoutez le chemin de la source code de glMiSOM dans INCLUDEPATH, celui de cinq fichiers *extractorinterface.h*, *extractorwidgetinterface.h*, *image.h*, *feature.h*, *util.h* dans *HEADERS* et celui de trois fichiers *image.cpp*, *feature.cpp* et *util.cpp* dans *SOURCES*.
 Exemple :
+```
 INCLUDEPATH  += ../../glMiSOM/
 HEADERS      += ../../glMiSOM/Extractor/extractorinterface.h \
                 ../../glMiSOM/Extractor/extractorwidgetinterface.h \
@@ -67,10 +72,11 @@ HEADERS      += ../../glMiSOM/Extractor/extractorinterface.h \
 SOURCES       = ../../glMiSOM/Core/image.cpp \
                 ../../glMiSOM/Core/feature.cpp \
                 ../../glMiSOM/util.cpp
+```
 
-Ensuite, vous créer deux classes qui hériteront deux classes ExtractorInterface et ExtractorWidgetInterface.
+Ensuite, vous créer deux classes qui hériteront deux classes *ExtractorInterface* et *ExtractorWidgetInterface*.
 
-ExtractorWidgetInterface définit l’interface sur l’écran où l’utilisateur peut choisir des paramètres de l’extracteur. C’est une classe héritant la classes QGroupBox. Sa définition est suivante :
+**ExtractorWidgetInterface** définit l’interface sur l’écran où l’utilisateur peut choisir des paramètres de l’extracteur. C’est une classe héritant la classes QGroupBox. Sa définition est suivante :
 #include <QGroupBox>
 class ExtractorWidgetInterface : public QGroupBox
 {
