@@ -1,17 +1,17 @@
 glMiSOM
 =======
 
-##Introduction
+## Introduction
 
 glMiSOM est un prototype de la gestion d’images qui permet à l’utilisateur de chercher des images similaires en représentant toutes les images sur une surface plane où les images plus proches sont plus similaires et vice versa. En même temps, glMiSOM est aussi utilisé comme l’outil de test pour les caractéristiques de bas niveau de la sémantique de l’image  et les combinaisons des caractéristiques.
 
 Pour utiliser bien ce logiciel, l’utilisateur doit savoir des connaissances sur les caractéristiques de bas niveau de la sémantique de l’image, le processus d’extraction des caractéristiques et l’algorithme Cartes auto-organisatrices (SOM - Self Organizing Map).
 
-##Nécessités
+## Nécessités
 
 Ce logiciel exécute seulement sur le système d’exploitation Ubuntu avec la plateforme Qt 4.7.4 ou ultérieure et OpenCV 2.1. Le logiciel utilise encore la librairie QOpenGL de Qt. Donc, dans votre système, vous devez installer les paquets suivants, avec toutes les dépendances associées : xord-dev, freeglut3, freeglut3-dev.
 
-##Fonctionnalisés
+## Fonctionnalisés
 
 1. Soutenir les types d’images suivants : jpg, jpeg, png, bmp, tiff, ppm, pgm
 2. Gérer, charger, enregistrer les bases d’images en utilisant les fichiers metadata
@@ -29,7 +29,7 @@ Ce logiciel exécute seulement sur le système d’exploitation Ubuntu avec la p
 14. Chercher l’image basé sur le contenu
 15. Classifier en utilisant la couleur
 
-##Fichiers metadata
+## Fichiers metadata
 
 Pour chaque base d’images, glMiSOM stocke ses informations sur des fichiers metadata, en généralement y compris :
 
@@ -38,7 +38,7 @@ Pour chaque base d’images, glMiSOM stocke ses informations sur des fichiers me
 3. *map.meta* : stocker des paramètres de l’algorithme Carte auto-organisatrices, la grille de Kohonen, le résultat de visualisation et celui de ré-arrangement de la dernière fois d'exécution.
 4. *Les fichiers meta des images <nom de l’image.meta>* : stocker les vecteurs de caractéristiques extraits de cette image.
 
-##Dossiers nécessaires
+## Dossiers nécessaires
 
 Dans le dossiers de glMiSOM, on a aussi deux dossiers nécessaires pour exécuter du logiciel :
 
@@ -51,7 +51,7 @@ Voir le vidéo [glMiSOM’s demo.m4v](http://www.youtube.com/watch?v=jqIKEVil0Ig
 
 **Notes : Pour utiliser les bases d’images associées, vous ouvririez le fichier database.meta de chaque base d’images et changez les chemins d’images pour s’adapter avec le endroit où vous mettez les images.**
 
-##Classes du glMiSOM
+## Classes du glMiSOM
 
 J’ai organisé le glMiSOM en cinq modules :
 
@@ -65,13 +65,14 @@ De plus, j’ai une classe util qui comprend des fonctions utiles et statiques.
 
 Pour soutenir les modules d’extension, glMiSOM définir deux classes extractorinterface et extractorwidgetinterface. Tous les modules d’extension doivent hériter ces deux classes.
 
-##Codage d’un nouveau module d’extension de l’extracteur des caractéristiques
+## Codage d’un nouveau module d’extension de l’extracteur des caractéristiques
 
 *Pour coder bien des modules d’extension, il faut savoir des connaissances basiques sur le codage d’un module d’extension dans la plateforme Qt (lire le guide de Qt pour plus information).*
 
 Tout d’abord, dans le fichier .pro du projet, vous ajoutez le chemin de la source code de glMiSOM dans INCLUDEPATH, celui de cinq fichiers *extractorinterface.h*, *extractorwidgetinterface.h*, *image.h*, *feature.h*, *util.h* dans *HEADERS* et celui de trois fichiers *image.cpp*, *feature.cpp* et *util.cpp* dans *SOURCES*.
 
 Exemple :
+
 ```
 INCLUDEPATH  += ../../glMiSOM/
 HEADERS      += ../../glMiSOM/Extractor/extractorinterface.h \
