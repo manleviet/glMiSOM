@@ -45,7 +45,7 @@ Dans le dossiers de glMiSOM, on a aussi deux dossiers nécessaires pour exécute
 1. *images* : ce dossier stocke une image transparent.png. Cette image sert à dessiner la quantité d’images dans une casse de la grille de SOM.
 2. *plugins* : stocker quatre modules d’exécution de quatre extracteurs des caractéristiques.
 
-##Exemple d’un processus de l’utilisation de glMiSOM
+## Exemple d’un processus de l’utilisation de glMiSOM
 
 Voir le vidéo [glMiSOM’s demo.m4v](http://www.youtube.com/watch?v=jqIKEVil0Ig&list=PLgK2a3_J4mVzySxCbZIyzllufwBkwMQPA&index=1).
 
