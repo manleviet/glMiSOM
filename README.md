@@ -2,14 +2,17 @@ glMiSOM
 =======
 
 ##Introduction
+
 glMiSOM est un prototype de la gestion d’images qui permet à l’utilisateur de chercher des images similaires en représentant toutes les images sur une surface plane où les images plus proches sont plus similaires et vice versa. En même temps, glMiSOM est aussi utilisé comme l’outil de test pour les caractéristiques de bas niveau de la sémantique de l’image  et les combinaisons des caractéristiques.
 
 Pour utiliser bien ce logiciel, l’utilisateur doit savoir des connaissances sur les caractéristiques de bas niveau de la sémantique de l’image, le processus d’extraction des caractéristiques et l’algorithme Cartes auto-organisatrices (SOM - Self Organizing Map).
 
 ##Nécessités
+
 Ce logiciel exécute seulement sur le système d’exploitation Ubuntu avec la plateforme Qt 4.7.4 ou ultérieure et OpenCV 2.1. Le logiciel utilise encore la librairie QOpenGL de Qt. Donc, dans votre système, vous devez installer les paquets suivants, avec toutes les dépendances associées : xord-dev, freeglut3, freeglut3-dev.
 
 ##Fonctionnalisés
+
 1. Soutenir les types d’images suivants : jpg, jpeg, png, bmp, tiff, ppm, pgm
 2. Gérer, charger, enregistrer les bases d’images en utilisant les fichiers metadata
 3. Charger, enregistrer les cartes de SOM
@@ -27,6 +30,7 @@ Ce logiciel exécute seulement sur le système d’exploitation Ubuntu avec la p
 15. Classifier en utilisant la couleur
 
 ##Fichiers metadata
+
 Pour chaque base d’images, glMiSOM stocke ses informations sur des fichiers metadata, en généralement y compris :
 
 1. *database.meta* : stocker les chemins de toutes les images dans la base d’images
@@ -35,17 +39,20 @@ Pour chaque base d’images, glMiSOM stocke ses informations sur des fichiers me
 4. *Les fichiers meta des images <nom de l’image.meta>* : stocker les vecteurs de caractéristiques extraits de cette image.
 
 ##Dossiers nécessaires
+
 Dans le dossiers de glMiSOM, on a aussi deux dossiers nécessaires pour exécuter du logiciel :
 
 1. *images* : ce dossier stocke une image transparent.png. Cette image sert à dessiner la quantité d’images dans une casse de la grille de SOM.
 2. *plugins* : stocker quatre modules d’exécution de quatre extracteurs des caractéristiques.
 
 ##Exemple d’un processus de l’utilisation de glMiSOM
+
 Voir le vidéo [glMiSOM’s demo.m4v](http://www.youtube.com/watch?v=jqIKEVil0Ig&list=PLgK2a3_J4mVzySxCbZIyzllufwBkwMQPA&index=1).
 
 **Notes : Pour utiliser les bases d’images associées, vous ouvririez le fichier database.meta de chaque base d’images et changez les chemins d’images pour s’adapter avec le endroit où vous mettez les images.**
 
 ##Classes du glMiSOM
+
 J’ai organisé le glMiSOM en cinq modules :
 
 1. **Core** : Ce sont les classes basiques qui servent à stocker la base d’image et la grille de SOM. Ce module comprend les classes suivantes : *baseimage*, *image*, *feature*, *gridsom*, *rowsom*, *cellsom*.
@@ -59,9 +66,11 @@ De plus, j’ai une classe util qui comprend des fonctions utiles et statiques.
 Pour soutenir les modules d’extension, glMiSOM définir deux classes extractorinterface et extractorwidgetinterface. Tous les modules d’extension doivent hériter ces deux classes.
 
 ##Codage d’un nouveau module d’extension de l’extracteur des caractéristiques
+
 *Pour coder bien des modules d’extension, il faut savoir des connaissances basiques sur le codage d’un module d’extension dans la plateforme Qt (lire le guide de Qt pour plus information).*
 
 Tout d’abord, dans le fichier .pro du projet, vous ajoutez le chemin de la source code de glMiSOM dans INCLUDEPATH, celui de cinq fichiers *extractorinterface.h*, *extractorwidgetinterface.h*, *image.h*, *feature.h*, *util.h* dans *HEADERS* et celui de trois fichiers *image.cpp*, *feature.cpp* et *util.cpp* dans *SOURCES*.
+
 Exemple :
 ```
 INCLUDEPATH  += ../../glMiSOM/
@@ -78,6 +87,7 @@ SOURCES       = ../../glMiSOM/Core/image.cpp \
 Ensuite, vous créer deux classes qui hériteront deux classes *ExtractorInterface* et *ExtractorWidgetInterface*.
 
 **ExtractorWidgetInterface** définit l’interface sur l’écran où l’utilisateur peut choisir des paramètres de l’extracteur. C’est une classe héritant la classes QGroupBox. Sa définition est suivante :
+
 ```
 #include <QGroupBox>
 class ExtractorWidgetInterface : public QGroupBox
@@ -95,6 +105,7 @@ private slots:
     virtual void computeQuantity() = 0;
 };
 ```
+
 Dans la fonction de construction, vous créez des widgets nécessaires pour l’interface de l’extracteur. En même temps, vous implémentez six fonctions suivantes :
 
 1. *resetDefault* : restaurer les valeurs dans les widgets en utilisant les valeurs par défaut
@@ -105,6 +116,7 @@ Dans la fonction de construction, vous créez des widgets nécessaires pour l’
 6. *computeQuantity* : calculer le nombre des éléments du vecteur de caractéristiques, sert seulement à représenter sur l’interface elle-même.
 
 Exemple :
+
 ```C++
 //
 //
@@ -288,6 +300,7 @@ Alors, un module d’extension doit implémenter les fonctions suivantes :
 14. *adapt* : faire l’adaptation, utilisée par l’algorithme SOM
 
 Exemple :
+
 ```C++
 //
 //
@@ -512,4 +525,5 @@ void ColorHistogramExtractor::parseParams(QString codedDes, QString &name, bool 
 }
 Q_EXPORT_PLUGIN2(colorhistogramextractor, ColorHistogramExtractor)
 ```
+
 Vous pouvez voir la source code de quatre extracteurs dans le dossier Plugin pour comprendre bien.
